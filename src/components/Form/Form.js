@@ -18,12 +18,17 @@ class Form extends React.Component {
       }
     }    
   }
-
  
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { loginValue, passwordValue, usersLoginData } = this.state;
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const {
+      loginValue,
+      passwordValue,
+      usersLoginData
+    } = this.state;
+
     const { setFlag } = this.props;
+
     if (loginValue === usersLoginData.admin.login
       && passwordValue === usersLoginData.admin.password) {
         setFlag(true);
@@ -54,16 +59,13 @@ class Form extends React.Component {
     });
   }
 
-
-
   render() {
     const {
       handleSubmitResult,
       handleSubmitFacebook,
       loginValue,
       passwordValue
-    } = this.state;
-    
+    } = this.state;    
 
     if (handleSubmitFacebook) {
         return (

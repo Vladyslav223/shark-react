@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter, Redirect } from 'react-router-dom';
 
+import Nav from  '../Nav/Nav';
 import './Profile.scss'
 
 const Profile = () => {
@@ -8,36 +9,42 @@ const Profile = () => {
     const userKey = JSON.parse(localStorage.getItem('userKey'));
 
     if (!userKey) {
-        return (
-          <HashRouter>
-            <Redirect to="/autorise" />
-          </HashRouter>
-        );
+      return (
+        <HashRouter>
+        <Redirect to="/autorise" />
+        </HashRouter>
+      );
     }
 
     if (data.results) {
-        console.log(data.results[0]);
         const { name, picture, location, email, login } = data.results[0];
         return (
             <>
+                <Nav />
                 <h1>Profile</h1>
                 <div className="user">
                     <img className="user__image" src={picture.large} alt="user" />
                     <div className="user__info">
-                        <div className="user__name">Name:{
+                    <div className="user__label">Name:</div>
+                        <div className="user__name">{
                             name.title + ' ' + name.first + ' ' + name.last
                         }
                         </div>
-                        <div className="user__username">Nick:{
+                        <div className="user__label">Nick:</div>
+                        <div className="user__username">{
                             login.username
                         }</div>
-                        <div className="user__country">Country:{
+                        <div className="user__label">Country:</div>
+                        <div className="user__country">{
                             location.country
                         }</div>
-                        <div className="user__name">City:{
+                        <div className="user__label">City:</div>
+
+                        <div className="user__name">{
                             location.city
                         }</div>
-                        <div className="user__email">Email:{
+                        <div className="user__label">Email:</div>
+                        <div className="user__email">{
                             email
                         }</div>
                     </div>
