@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/shark-react/static/css/main.e91d6d3a.chunk.css",
+    "main.css": "/shark-react/static/css/main.ab1ad411.chunk.css",
     "main.js": "/shark-react/static/js/main.d71300ec.chunk.js",
     "main.js.map": "/shark-react/static/js/main.d71300ec.chunk.js.map",
     "runtime-main.js": "/shark-react/static/js/runtime-main.e12406e3.js",
@@ -8,15 +8,15 @@
     "static/js/2.171ff1a8.chunk.js": "/shark-react/static/js/2.171ff1a8.chunk.js",
     "static/js/2.171ff1a8.chunk.js.map": "/shark-react/static/js/2.171ff1a8.chunk.js.map",
     "index.html": "/shark-react/index.html",
-    "precache-manifest.37129a5bf32fd79bf628af579fdde40d.js": "/shark-react/precache-manifest.37129a5bf32fd79bf628af579fdde40d.js",
+    "precache-manifest.aab23b90fab3e71e42a7bcece71420e2.js": "/shark-react/precache-manifest.aab23b90fab3e71e42a7bcece71420e2.js",
     "service-worker.js": "/shark-react/service-worker.js",
-    "static/css/main.e91d6d3a.chunk.css.map": "/shark-react/static/css/main.e91d6d3a.chunk.css.map",
+    "static/css/main.ab1ad411.chunk.css.map": "/shark-react/static/css/main.ab1ad411.chunk.css.map",
     "static/js/2.171ff1a8.chunk.js.LICENSE": "/shark-react/static/js/2.171ff1a8.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.e12406e3.js",
     "static/js/2.171ff1a8.chunk.js",
-    "static/css/main.e91d6d3a.chunk.css",
+    "static/css/main.ab1ad411.chunk.css",
     "static/js/main.d71300ec.chunk.js"
   ]
 }
