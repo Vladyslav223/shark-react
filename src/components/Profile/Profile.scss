@@ -74,7 +74,7 @@
     }
 
     .form .label {
-        width: 260px;
+        width: 320px;
     }
 
     #login {
@@ -86,12 +86,8 @@
 
     }
 
-    .login-facebook {
+    #root .login-facebook {
         left: 20px;
-    }
-
-    .login-facebook {
-        left: 40px;
         top: 25.5px;
     }
     .api {
