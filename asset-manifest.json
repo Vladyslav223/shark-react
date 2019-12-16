@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/shark-react/static/css/main.299de9fd.chunk.css",
-    "main.js": "/shark-react/static/js/main.d71300ec.chunk.js",
-    "main.js.map": "/shark-react/static/js/main.d71300ec.chunk.js.map",
+    "main.css": "/shark-react/static/css/main.699ee2f9.chunk.css",
+    "main.js": "/shark-react/static/js/main.af7e8d8b.chunk.js",
+    "main.js.map": "/shark-react/static/js/main.af7e8d8b.chunk.js.map",
     "runtime-main.js": "/shark-react/static/js/runtime-main.e12406e3.js",
     "runtime-main.js.map": "/shark-react/static/js/runtime-main.e12406e3.js.map",
-    "static/js/2.171ff1a8.chunk.js": "/shark-react/static/js/2.171ff1a8.chunk.js",
-    "static/js/2.171ff1a8.chunk.js.map": "/shark-react/static/js/2.171ff1a8.chunk.js.map",
+    "static/js/2.d7d4e2e5.chunk.js": "/shark-react/static/js/2.d7d4e2e5.chunk.js",
+    "static/js/2.d7d4e2e5.chunk.js.map": "/shark-react/static/js/2.d7d4e2e5.chunk.js.map",
     "index.html": "/shark-react/index.html",
-    "precache-manifest.6941abde558b5cbc7bc89dc528157b6f.js": "/shark-react/precache-manifest.6941abde558b5cbc7bc89dc528157b6f.js",
+    "precache-manifest.c8df594109c18323ba81280a5901b93d.js": "/shark-react/precache-manifest.c8df594109c18323ba81280a5901b93d.js",
     "service-worker.js": "/shark-react/service-worker.js",
-    "static/css/main.299de9fd.chunk.css.map": "/shark-react/static/css/main.299de9fd.chunk.css.map",
-    "static/js/2.171ff1a8.chunk.js.LICENSE": "/shark-react/static/js/2.171ff1a8.chunk.js.LICENSE"
+    "static/css/main.699ee2f9.chunk.css.map": "/shark-react/static/css/main.699ee2f9.chunk.css.map",
+    "static/js/2.d7d4e2e5.chunk.js.LICENSE": "/shark-react/static/js/2.d7d4e2e5.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.e12406e3.js",
-    "static/js/2.171ff1a8.chunk.js",
-    "static/css/main.299de9fd.chunk.css",
-    "static/js/main.d71300ec.chunk.js"
+    "static/js/2.d7d4e2e5.chunk.js",
+    "static/css/main.699ee2f9.chunk.css",
+    "static/js/main.af7e8d8b.chunk.js"
   ]
 }
