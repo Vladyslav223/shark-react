@@ -1,36 +1,29 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import {
-  HashRouter, Route, Switch
-} from 'react-router-dom';
-
-import Contacts from './components/Contacts/Contacts';
-import HomePage from './components/HomePage/HomePage';
+import Registration from './components/Registration';
+import Contacts from './components/Contacts';
+import HomePage from './components/HomePage';
 import Profile from './components/Profile/Profile';
+import Nav from './components/Nav/Nav';
 import Form from './components/Form/Form';
-
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.scss';
 
-class App extends React.Component {
-  state = {
-    disableMenu: false,
-  }
+const App = () => (
+  <Switch>
+    <Route path="/autorise" component={Form} />
+    <Route path="/register" component={Registration} />          
+    <>
+      <Nav />
+      <Switch>
+        <ProtectedRoute exact path="/" component={HomePage} /> 
+        <ProtectedRoute path="/contacts" component={Contacts} /> 
+        <ProtectedRoute path="/profile" component={Profile} />            
+      </Switch>
+    </> 
+  </Switch>
+);
 
-  render() {
-    return (<>
-      <HashRouter>
-        <Route path="/autorise" component={Form} />
-      </HashRouter>
-
-      <HashRouter>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/contacts" component={Contacts} />
-          <Route path="/profile" component={Profile} />
-        </Switch>
-      </HashRouter>
-    </>);
-  }
-};
 
 export default App;

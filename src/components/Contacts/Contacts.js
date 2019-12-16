@@ -1,56 +1,33 @@
 import React, { Component } from 'react';
-import { HashRouter, Redirect } from 'react-router-dom';
 
-import Nav from '../Nav/Nav';
 import Contact from '../Contact/Contact';
-
+import PreLoader from  '../Preloader';
 import './Contacts.scss';
-const API_URL = 'https://randomuser.me/api/?page=1&results=10&seed=abc';
 
 class Contacts extends Component {
-  state = {
-    contacts: [],
-    isLoading: true,
-  }
+  state = {}
 
-  componentWillMount = async () => {
-    const response = await fetch(API_URL);
-    const info = await response.json();
-    this.setState({
-      contacts: info.results,
-      isLoading: false,
-    });
+  componentDidMount = async() => {
+    this.props.preLoader();
+    this.props.loadContactsData();
   }
 
   render() {
-    const { isLoading, contacts } = this.state;
-    const userKey = JSON.parse(localStorage.getItem('userKey'));
-
-    if (!userKey) {
-      return (
-        <HashRouter>
-          <Redirect to="/autorise" />
-        </HashRouter>
-      );
-    }
-
+    const { isLoading, contacts } = this.props;
+    
     return (isLoading
       ? (<>
-        <Nav />
-        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        <PreLoader />
       </>)
       : (<>
-        <Nav />
         <div className="contacts-list">
-          {contacts.map(contact => {
-            return (
+          {contacts.map(contact => (
               <Contact
-                handleRemovecontact={this.handleRemovecontact}
-                key={contact.id}
+                key={contact.cell}
                 contact={contact}
               />
             )
-          })}
+          )}
         </div>
       </>));
   }

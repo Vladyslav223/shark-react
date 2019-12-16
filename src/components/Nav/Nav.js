@@ -1,30 +1,19 @@
 import React from 'react';
-import { HashRouter, Redirect, NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 class Nav extends React.Component {
-    state={ redirectToMain: false,}
 
     handleLogOut = () => {
-        localStorage.clear();
-        this.setState({
-            redirectToMain: true,
-        })
+        localStorage.clear();   
+             this.props.history.push('/autorise');
     }
-    render() {
-        const { redirectToMain } = this.state;
-        if (redirectToMain) {
-            return (
-              <HashRouter>
-                <Redirect to="/autorise" />
-              </HashRouter>
-            ); 
-          }
 
+    render() {
         return (<>
             <nav className="nav">
-                <NavLink className="nav-link" exact to="/">Главная</NavLink>
-                <NavLink className="nav-link" exact to="/contacts">Контакты</NavLink>
-                <NavLink className="nav-link" exact to="/profile">Профиль</NavLink>
+                <NavLink className="nav-link"  to="/">Главная</NavLink>
+                <NavLink className="nav-link"  to="/contacts">Контакты</NavLink>
+                <NavLink className="nav-link"  to="/profile">Профиль</NavLink>
             </nav>
             <button
                 type="button"
@@ -38,4 +27,4 @@ class Nav extends React.Component {
 };
 
 
-export default Nav;
+export default withRouter(Nav);

@@ -40,8 +40,10 @@
     transition: background 0.3s, border 0.3s;
     border: 1px solid transparent;
     position: relative;
-    left: 158px;
+    left: 130px;
     top: 15px;
+    margin-left: 10px;
+    
     &:hover {
       background: #2e2020;
       border: 1px solid #978c8ca1;
@@ -55,12 +57,18 @@
   #password {
     margin-left: 3px;
   }
+
+  #confirm-password {
+    margin-left: 16px;
+  }
     
   .label {
     width: 280px;
     display: block;
-    margin: auto;
+    margin: 0 auto 10px;
   }
+
+
   
   .label:first-child {
     margin-bottom: 10px;
@@ -83,7 +91,7 @@
         transition: border 0.3s;
         position: relative;
         border-radius: 5px;
-        left: 47px;
+        left: -77px;
         top: 25.5px;
         &:hover {
           border: 1px solid #7e7777a1;

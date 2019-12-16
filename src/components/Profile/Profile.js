@@ -1,26 +1,15 @@
 import React from 'react';
-import { HashRouter, Redirect } from 'react-router-dom';
 
-import Nav from  '../Nav/Nav';
 import './Profile.scss'
 
 const Profile = () => {
     const data = JSON.parse(localStorage.getItem('userData'));
-    const userKey = JSON.parse(localStorage.getItem('userKey'));
-
-    if (!userKey) {
-      return (
-        <HashRouter>
-        <Redirect to="/autorise" />
-        </HashRouter>
-      );
-    }
+    //const userKey = JSON.parse(localStorage.getItem('userKey'));
 
     if (data.results) {
         const { name, picture, location, email, login } = data.results[0];
         return (
             <>
-                <Nav />
                 <h1>Profile</h1>
                 <div className="user">
                     <img className="user__image" src={picture.large} alt="user" />

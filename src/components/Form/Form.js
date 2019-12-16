@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, HashRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './Form.scss';
 
 const API_URL = 'https://randomuser.me/api/'
@@ -9,76 +9,36 @@ class Form extends React.Component {
     handleSubmitResult: 0,
     loginValue: '',
     passwordValue: '',
-    handleSubmitFacebook: false,
-    userData: {},
-    usersLoginData: {
-      admin:{
-        login: 'reactdev',
-        password: '123456',
-      }
-    }    
-  }
- 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const {
-      loginValue,
-      passwordValue,
-      usersLoginData
-    } = this.state;
-
-    const { setFlag } = this.props;
-
-    if (loginValue === usersLoginData.admin.login
-      && passwordValue === usersLoginData.admin.password) {
-        setFlag(true);
-      this.setState({
-        handleSubmitResult: 2,
-      });
-    } else {
-      this.setState({
-        handleSubmitResult: 1,
-      });
-    }
-  }
+  } 
 
   handleSubmitFacebook = async() => {  
-       
-    const response = await fetch(API_URL);
-    const userData = await response.json();
-    const userKey = userData.results[0].login.sha256;
-    this.setState({
-      handleSubmitFacebook: true,
-    });       
+    try{
+      const response = await fetch(API_URL);
+      const userData = await response.json();
+      const userKey = userData.results[0].login.sha256;
+      localStorage.setItem('userData', JSON.stringify(userData));
+      localStorage.setItem('userKey', JSON.stringify(userKey));
+      this.props.history.push('/');
+      } catch (e) {
+         console.log(e);
+        }             
+  }
 
-    localStorage.setItem('userData', JSON.stringify(userData));
-    localStorage.setItem('userKey', JSON.stringify(userKey));
-    this.setState({
-      userData,
-      handleSubmitFacebook: false,
-    });
+  handleRegistration = () => {
+    this.props.history.push('/register');
   }
 
   render() {
     const {
       handleSubmitResult,
-      handleSubmitFacebook,
       loginValue,
       passwordValue
     } = this.state;    
 
-    if (handleSubmitFacebook) {
-        return (
-          <HashRouter>
-            <Redirect to="/" />
-          </HashRouter>
-        );
-      }
-
     return (
       <>
         <h1>Login please</h1>
-        <form className="form" onSubmit={this.handleSubmit}>
+        <form className="form">
           <label className="label" htmlFor="login">
             login:
             <input
@@ -100,9 +60,16 @@ class Form extends React.Component {
           <button
             className="button"
             type="submit"
+            onClick={this.handleRegistration}
+          >
+                Register
+          </button>
+          <button
+            className="button"
+            type="submit"
           >
                 Login
-                </button>
+          </button>
           <button
             className="login-facebook"
             type="button"
@@ -121,5 +88,5 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default withRouter(Form);
 
