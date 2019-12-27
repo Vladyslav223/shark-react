@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import axios from "axios";
-=======
-import { axios } from "axios";
->>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
 
 export const ACTION_TYPES = {
   LOGIN: "LOGIN",
@@ -13,13 +9,9 @@ export const ACTION_TYPES = {
   HANDLE_SUCCESS_USERLIST: "HANDLE_SUCCESS_USERLIST",
   HANDLE_SUBMIT_REGISTER: "HANDLE_SUBMIT_REGISTER",
   HANDLE_SUCCESS_COMMENTS: "HANDLE_SUCCESS_COMMENTS",
-<<<<<<< HEAD
   HANDLE_OPEN_USER: "HANDLE_OPEN_USER",
   HANDLE_DELETE_COMMENT: "HANDLE_DELETE_COMMENT",
   HANDLE_EDIT_COMMENT: "HANDLE_EDIT_COMMENT"
-=======
-  HANDLE_OPEN_USER: "HANDLE_OPEN_USER"
->>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
 };
 
 const {
@@ -29,11 +21,8 @@ const {
   HANDLE_SUCCESS_POSTLIST,
   HANDLE_SUCCESS_USERLIST,
   HANDLE_SUCCESS_COMMENTS,
-<<<<<<< HEAD
   HANDLE_DELETE_COMMENT,
   HANDLE_EDIT_COMMENT,
-=======
->>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
   HANDLE_OPEN_USER,
   PRELOADER
 } = ACTION_TYPES;
@@ -61,7 +50,6 @@ export const handleSuccessComments = payload => ({
   payload
 });
 
-<<<<<<< HEAD
 export const handleDeleteComment = payload => ({
   type: HANDLE_DELETE_COMMENT,
   payload
@@ -74,8 +62,6 @@ export const handleEditComment = payload => {
   };
 };
 
-=======
->>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
 export const handleSuccessFacebook = ({ result }) => ({
   type: HANDLE_SUCCESS_FACEBOOK,
   payload: { result }
@@ -103,7 +89,6 @@ export const handleOpenUser = payload => {
 export const preLoader = () => ({ type: PRELOADER });
 
 //functions
-<<<<<<< HEAD
 
 // export const connectWithDB = a => async dispatch => {
 //   const { name, pass, confirmPass } = a;
@@ -174,49 +159,4 @@ export const loadContactsData = () => async dispatch => {
 
 export const onClickUser = user => dispatch => {
   dispatch(handleOpenUser(user));
-=======
-export const connectWithDB = a => async dispatch => {
-  const { name, pass, confirmPass } = a;
-  const response = await axios.post(name, pass, confirmPass).then(res => {});
-  const result = response.json();
-
-  dispatch(handleSubmitRegister({ name, pass, confirmPass }));
-};
-
-export const loadPostList = () => async dispatch => {
-  const response = await fetch(API_URL_POSTLIST);
-  const result = await response.json();
-  dispatch(handleSuccessPostlist({ result }));
-};
-
-export const loadUserList = () => async dispatch => {
-  const response = await fetch(API_URL_USERLIST);
-  const result = await response.json();
-  dispatch(handleSuccessUserlist({ result }));
-};
-
-export const loadCommentList = () => async dispatch => {
-  const response = await fetch(API_URL_COMMENTS);
-  const result = await response.json();
-  dispatch(handleSuccessComments({ result }));
-};
-
-export const loadFacebookData = () => async dispatch => {
-  const response = await fetch(API_URL_INFO);
-  const info = await response.json();
-  const result = info.entries[0];
-
-  dispatch(handleSuccessFacebook({ result }));
-};
-
-export const loadContactsData = () => async dispatch => {
-  const response = await fetch(API_URL_CONTACTS);
-  const { results } = await response.json();
-  console.log(results);
-  dispatch(handleSuccessContacts(results));
-};
-
-export const onClickUser = id => dispatch => {
-  dispatch(handleOpenUser(id));
->>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
 };
