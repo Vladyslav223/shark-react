@@ -1,11 +1,21 @@
 import React from "react";
+<<<<<<< HEAD
+=======
+
+>>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
 import "./Profile.scss";
 
 const Profile = () => {
   const data = JSON.parse(localStorage.getItem("userData"));
+<<<<<<< HEAD
   if (data.results) {
     const { name, picture, location, email, login } = data.results[0];
+=======
+  //const userKey = JSON.parse(localStorage.getItem('userKey'));
+>>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
 
+  if (data.results) {
+    const { name, picture, location, email, login } = data.results[0];
     return (
       <>
         <h1>Profile</h1>

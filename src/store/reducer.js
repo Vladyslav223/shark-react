@@ -6,12 +6,19 @@ import { reducer as formReducer } from "redux-form";
 const {
   HANDLE_SUCCESS_FACEBOOK,
   HANDLE_SUCCESS_CONTACTS,
+<<<<<<< HEAD
   //HANDLE_SUBMIT_REGISTER,
   HANDLE_SUCCESS_POSTLIST,
   HANDLE_SUCCESS_USERLIST,
   HANDLE_SUCCESS_COMMENTS,
   HANDLE_DELETE_COMMENT,
   HANDLE_EDIT_COMMENT,
+=======
+  HANDLE_SUBMIT_REGISTER,
+  HANDLE_SUCCESS_POSTLIST,
+  HANDLE_SUCCESS_USERLIST,
+  HANDLE_SUCCESS_COMMENTS,
+>>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
   HANDLE_OPEN_USER,
   PRELOADER
 } = ACTION_TYPES;
@@ -30,6 +37,7 @@ export const initialState = {
       }
     ]
   },
+<<<<<<< HEAD
   comment: {
     name: null,
     body: null,
@@ -37,6 +45,9 @@ export const initialState = {
   },
 
   user: null,
+=======
+  currentUser: null,
+>>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
   posts: [],
   contacts: [],
   isLoading: false,
@@ -67,6 +78,7 @@ export const reducer = (state = initialState, action) => {
         isLoading: false
       };
 
+<<<<<<< HEAD
     case HANDLE_DELETE_COMMENT:
       return {
         ...state,
@@ -85,6 +97,8 @@ export const reducer = (state = initialState, action) => {
         }
       };
 
+=======
+>>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
     case HANDLE_SUCCESS_USERLIST:
       return {
         ...state,
@@ -99,11 +113,24 @@ export const reducer = (state = initialState, action) => {
         userKeyFlag: !!action.payload.userKey,
         isLoading: false
       };
+<<<<<<< HEAD
+=======
+
+    case HANDLE_SUBMIT_REGISTER:
+      const user = {
+        name: action.payload.name,
+        pass: action.payload.pass
+      };
+>>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
 
     case HANDLE_OPEN_USER:
       return {
         ...state,
+<<<<<<< HEAD
         user: action.payload
+=======
+        currentUser: action.payload
+>>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
       };
 
     case PRELOADER:
