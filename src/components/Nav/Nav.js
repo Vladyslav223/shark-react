@@ -25,12 +25,9 @@ class Nav extends React.Component {
           <NavLink className="nav-link" to="/profile">
             Профиль
           </NavLink>
-<<<<<<< HEAD
           <NavLink className="nav-link" to="/posts">
             Посты
           </NavLink>
-=======
->>>>>>> c15402091b58b88a0e922a1779c96bc271c383d7
         </nav>
         <button
           type="button"
