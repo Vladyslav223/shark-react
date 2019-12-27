@@ -1,13 +1,11 @@
 import React from "react";
-
 import "./Profile.scss";
 
 const Profile = () => {
   const data = JSON.parse(localStorage.getItem("userData"));
-  //const userKey = JSON.parse(localStorage.getItem('userKey'));
-
   if (data.results) {
     const { name, picture, location, email, login } = data.results[0];
+
     return (
       <>
         <h1>Profile</h1>

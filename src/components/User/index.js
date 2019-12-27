@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import PostList from "./PostList";
+import User from "./User";
 import {
   loadPostList,
   loadUserList,
@@ -29,4 +29,4 @@ const mapDispatchToProps = {
   preLoader
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default connect(mapStateToProps, mapDispatchToProps)(User);

@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 
-import UserComments from "./UserComments";
+import UserInfo from "./UserInfo";
 
 const mapStateToProps = ({ reducer }) => {
   return {
-    currentUser: reducer.currentUser,
+    user: reducer.user,
     posts: reducer.posts,
     userList: reducer.userList,
     isLoading: reducer.isLoading,
@@ -13,4 +13,4 @@ const mapStateToProps = ({ reducer }) => {
   };
 };
 
-export default connect(mapStateToProps)(UserComments);
+export default connect(mapStateToProps)(UserInfo);

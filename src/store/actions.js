@@ -1,4 +1,4 @@
-import { axios } from "axios";
+import axios from "axios";
 
 export const ACTION_TYPES = {
   LOGIN: "LOGIN",
@@ -9,7 +9,9 @@ export const ACTION_TYPES = {
   HANDLE_SUCCESS_USERLIST: "HANDLE_SUCCESS_USERLIST",
   HANDLE_SUBMIT_REGISTER: "HANDLE_SUBMIT_REGISTER",
   HANDLE_SUCCESS_COMMENTS: "HANDLE_SUCCESS_COMMENTS",
-  HANDLE_OPEN_USER: "HANDLE_OPEN_USER"
+  HANDLE_OPEN_USER: "HANDLE_OPEN_USER",
+  HANDLE_DELETE_COMMENT: "HANDLE_DELETE_COMMENT",
+  HANDLE_EDIT_COMMENT: "HANDLE_EDIT_COMMENT"
 };
 
 const {
@@ -19,6 +21,8 @@ const {
   HANDLE_SUCCESS_POSTLIST,
   HANDLE_SUCCESS_USERLIST,
   HANDLE_SUCCESS_COMMENTS,
+  HANDLE_DELETE_COMMENT,
+  HANDLE_EDIT_COMMENT,
   HANDLE_OPEN_USER,
   PRELOADER
 } = ACTION_TYPES;
@@ -45,6 +49,18 @@ export const handleSuccessComments = payload => ({
   type: HANDLE_SUCCESS_COMMENTS,
   payload
 });
+
+export const handleDeleteComment = payload => ({
+  type: HANDLE_DELETE_COMMENT,
+  payload
+});
+
+export const handleEditComment = payload => {
+  return {
+    type: HANDLE_EDIT_COMMENT,
+    payload
+  };
+};
 
 export const handleSuccessFacebook = ({ result }) => ({
   type: HANDLE_SUCCESS_FACEBOOK,
@@ -73,47 +89,74 @@ export const handleOpenUser = payload => {
 export const preLoader = () => ({ type: PRELOADER });
 
 //functions
-export const connectWithDB = a => async dispatch => {
-  const { name, pass, confirmPass } = a;
-  const response = await axios.post(name, pass, confirmPass).then(res => {});
-  const result = response.json();
 
-  dispatch(handleSubmitRegister({ name, pass, confirmPass }));
+// export const connectWithDB = a => async dispatch => {
+//   const { name, pass, confirmPass } = a;
+//   const response = await axios.post(name, pass, confirmPass).then(res => {});
+//   const result = response.json();
+//   dispatch(handleSubmitRegister({ name, pass, confirmPass }));
+// };
+
+export const loadPostList = () => dispatch => {
+  axios.get(API_URL_POSTLIST).then(res => {
+    const result = res.data;
+    dispatch(handleSuccessPostlist({ result }));
+  });
 };
 
-export const loadPostList = () => async dispatch => {
-  const response = await fetch(API_URL_POSTLIST);
-  const result = await response.json();
-  dispatch(handleSuccessPostlist({ result }));
+export const loadUserList = () => dispatch => {
+  axios.get(API_URL_USERLIST).then(res => {
+    const result = res.data;
+    dispatch(handleSuccessUserlist({ result }));
+  });
 };
 
-export const loadUserList = () => async dispatch => {
-  const response = await fetch(API_URL_USERLIST);
-  const result = await response.json();
-  dispatch(handleSuccessUserlist({ result }));
+export const loadCommentList = () => dispatch => {
+  axios.get(API_URL_COMMENTS).then(res => {
+    const result = res.data;
+    dispatch(handleSuccessComments({ result }));
+  });
 };
 
-export const loadCommentList = () => async dispatch => {
-  const response = await fetch(API_URL_COMMENTS);
-  const result = await response.json();
-  dispatch(handleSuccessComments({ result }));
+export const deleteComment = id => dispatch => {
+  const URL = `https://jsonplaceholder.typicode.com/comments/${id}`;
+  axios.delete(URL).then(res => {
+    console.log(res);
+  });
+  dispatch(handleDeleteComment(id));
 };
 
-export const loadFacebookData = () => async dispatch => {
-  const response = await fetch(API_URL_INFO);
-  const info = await response.json();
-  const result = info.entries[0];
+export const editComment = (values, id) => dispatch => {
+  const URL = `https://jsonplaceholder.typicode.com/comments/${id}`;
+  axios
+    .put(URL, {
+      name: values[0],
+      body: values[1],
+      id
+    })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  dispatch(handleEditComment({ values, id }));
+};
 
-  dispatch(handleSuccessFacebook({ result }));
+export const loadFacebookData = () => dispatch => {
+  axios.get(API_URL_INFO).then(res => {
+    const result = res.data.entries[0];
+    dispatch(handleSuccessFacebook({ result }));
+  });
 };
 
 export const loadContactsData = () => async dispatch => {
-  const response = await fetch(API_URL_CONTACTS);
-  const { results } = await response.json();
-  console.log(results);
-  dispatch(handleSuccessContacts(results));
+  axios.get(API_URL_CONTACTS).then(res => {
+    const result = res.data.results;
+    dispatch(handleSuccessContacts(result));
+  });
 };
 
-export const onClickUser = id => dispatch => {
-  dispatch(handleOpenUser(id));
+export const onClickUser = user => dispatch => {
+  dispatch(handleOpenUser(user));
 };

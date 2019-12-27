@@ -1,0 +1,17 @@
+.post-id {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #afa4a4;
+  color: white;
+  left: 0;
+  top: 0;
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}

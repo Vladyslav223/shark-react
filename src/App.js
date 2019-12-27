@@ -9,23 +9,24 @@ import Nav from "./components/Nav/Nav";
 import Form from "./components/Form/Form";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.scss";
-import PostList from "./components/PostList";
-import userComments from "./components/PostList/UserComments";
+import User from "./components/User";
+import UserInfo from "./components/User/UserInfo";
+import "normalize.css";
 
 const App = () => (
   <Switch>
     <Route path="/autorise" component={Form} />
     <Route path="/register" component={Registration} />
-    <Route path="/posts" component={PostList} />
-    <Route path="/user" component={userComments} />
-    <div>
+    <>
       <Nav />
       <Switch>
+        <Route path="/user" component={UserInfo} />
+        <Route path="/posts" component={User} />
         <ProtectedRoute exact path="/" component={HomePage} />
         <ProtectedRoute path="/contacts" component={Contacts} />
         <ProtectedRoute path="/profile" component={Profile} />
       </Switch>
-    </div>
+    </>
   </Switch>
 );
 

@@ -6,10 +6,12 @@ import { reducer as formReducer } from "redux-form";
 const {
   HANDLE_SUCCESS_FACEBOOK,
   HANDLE_SUCCESS_CONTACTS,
-  HANDLE_SUBMIT_REGISTER,
+  //HANDLE_SUBMIT_REGISTER,
   HANDLE_SUCCESS_POSTLIST,
   HANDLE_SUCCESS_USERLIST,
   HANDLE_SUCCESS_COMMENTS,
+  HANDLE_DELETE_COMMENT,
+  HANDLE_EDIT_COMMENT,
   HANDLE_OPEN_USER,
   PRELOADER
 } = ACTION_TYPES;
@@ -28,7 +30,13 @@ export const initialState = {
       }
     ]
   },
-  currentUser: null,
+  comment: {
+    name: null,
+    body: null,
+    id: null
+  },
+
+  user: null,
   posts: [],
   contacts: [],
   isLoading: false,
@@ -59,6 +67,24 @@ export const reducer = (state = initialState, action) => {
         isLoading: false
       };
 
+    case HANDLE_DELETE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.filter(
+          comment => comment.id !== action.payload
+        )
+      };
+
+    case HANDLE_EDIT_COMMENT:
+      return {
+        ...state,
+        comment: {
+          name: action.payload.values.UserCommentTitle,
+          body: action.payload.values.UserCommentBody,
+          id: action.payload.id
+        }
+      };
+
     case HANDLE_SUCCESS_USERLIST:
       return {
         ...state,
@@ -74,16 +100,10 @@ export const reducer = (state = initialState, action) => {
         isLoading: false
       };
 
-    case HANDLE_SUBMIT_REGISTER:
-      const user = {
-        name: action.payload.name,
-        pass: action.payload.pass
-      };
-
     case HANDLE_OPEN_USER:
       return {
         ...state,
-        currentUser: action.payload
+        user: action.payload
       };
 
     case PRELOADER:
