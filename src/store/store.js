@@ -5,7 +5,7 @@ import createSagaMiddleware from "redux-saga";
 import { routerMiddleware } from "connected-react-router";
 import { createRootReducer } from "./reducer";
 
-import { helloSaga } from "./sagas/sagas";
+import rootSaga from "./sagas";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const history = createBrowserHistory();
@@ -18,6 +18,6 @@ export default function configureStore() {
       applyMiddleware(routerMiddleware(history), thunk, sagaMiddleware)
     )
   );
-  sagaMiddleware.run(helloSaga);
+  sagaMiddleware.run(rootSaga);
   return store;
 }

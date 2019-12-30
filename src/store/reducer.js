@@ -46,6 +46,8 @@ export const initialState = {
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case HANDLE_SUCCESS_FACEBOOK:
+      console.log(action.payload);
+
       return {
         ...state,
         info: action.payload.result,

@@ -15,9 +15,8 @@ const ApiFields = [
 
 class HomePage extends Component {
   componentDidMount() {
-    const { loadFacebookData, preLoader } = this.props;
+    const { preLoader } = this.props;
     preLoader();
-    loadFacebookData();
   }
 
   render() {
