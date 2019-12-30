@@ -63,7 +63,6 @@ export const UserPosts = props => {
     stateComment
   } = props;
   let [isEditing, setEdit] = useState(null);
-  //let [editedComment, setComment] = useState(["", "", ""]);
   const classes = useStyles();
 
   const handleDeleteComment = id => {
@@ -181,8 +180,8 @@ export const UserPosts = props => {
                         <EditCommentForm
                           onSubmit={values => handleSubmitEdit(values, id)}
                           initialValues={{
-                            UserCommentTitle: comment.name,
-                            UserCommentBody: comment.body
+                            UserCommentTitle: editedCommentName || comment.name,
+                            UserCommentBody: editedCommentBody || comment.body
                           }}
                         />
                         <Box className="flex-wrapper">
